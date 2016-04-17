@@ -1476,7 +1476,7 @@ public class StatusBarHeaderView extends RelativeLayout implements View.OnClickL
 	resolver.registerContentObserver(Settings.Global.getUriFor(
                     Settings.Global.HEADS_UP_NOTIFICATIONS_ENABLED), false, this);
 	resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.HEADS_UP_SHOW_STATUS_BUTTON), true, this);
+                    Settings.System.HEADS_UP_SHOW_STATUS_BUTTON), false, this);
             update();
         }
 
@@ -1550,7 +1550,7 @@ public class StatusBarHeaderView extends RelativeLayout implements View.OnClickL
                 Settings.System.HEADER_DETAIL_FONT_STYLE, FONT_NORMAL,
                 UserHandle.USER_CURRENT);
             mShowHeadsUpButton = Settings.System.getInt(getContext().getContentResolver(),
-                Settings.System.HEADS_UP_SHOW_STATUS_BUTTON, 1) == 1;
+                Settings.System.HEADS_UP_SHOW_STATUS_BUTTON, 0) == 1;
 
 	    setStatusBarHeaderFontStyle	(mStatusBarHeaderFontStyle);
         setStatusBarWeatherFontStyle(mStatusBarHeaderWeatherFont);
@@ -1576,7 +1576,7 @@ public class StatusBarHeaderView extends RelativeLayout implements View.OnClickL
         mShowHeadsUpButton = Settings.System.getIntForUser(getContext().getContentResolver(),
                 Settings.System.HEADS_UP_SHOW_STATUS_BUTTON, 0, ActivityManager.getCurrentUser()) == 1;
         mShowTaskManager = Settings.System.getIntForUser(getContext().getContentResolver(),
-                Settings.System.ENABLE_TASK_MANAGER, 1, ActivityManager.getCurrentUser()) == 1;
+                Settings.System.ENABLE_TASK_MANAGER, 0, ActivityManager.getCurrentUser()) == 1;
     }
 
     private void updateHeadsUpState() {

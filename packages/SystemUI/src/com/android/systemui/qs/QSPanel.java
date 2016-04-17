@@ -392,7 +392,7 @@ public class QSPanel extends ViewGroup {
 
     public void refreshAllTiles() {
         mUseMainTiles = Settings.System.getIntForUser(getContext().getContentResolver(),
-                Settings.System.QS_USE_MAIN_TILES, 0, UserHandle.USER_CURRENT) == 1;
+                Settings.System.QS_USE_MAIN_TILES, 1, UserHandle.USER_CURRENT) == 1;
         for (int i = 0; i < mRecords.size(); i++) {
             TileRecord r = mRecords.get(i);
             r.tileView.setDual(mUseMainTiles && i < 2);
@@ -868,7 +868,7 @@ public class QSPanel extends ViewGroup {
                 0, UserHandle.USER_CURRENT) == 1;
            mUseMainTiles = Settings.System.getIntForUser(
             mContext.getContentResolver(), Settings.System.QS_USE_MAIN_TILES,
-                0, UserHandle.USER_CURRENT) == 1;
+                1, UserHandle.USER_CURRENT) == 1;
         }
     }
 }
